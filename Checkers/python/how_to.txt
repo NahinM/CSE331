@@ -1,0 +1,14 @@
+The checker gererates ∑(2^i) test cases for i = MAXdepth (in other words the length of the string)
+the object DFA has a constractor -> 
+
+constractor(symbols,table,finalAcceptedstates)
+
+parameters:
+symbols: the string that contains all the possible symbols.
+table: the table that is constracted by you. the table format:
+    symbols ->   [a]       [b]     [c]    // the order of the symbols is importent
+    state 0 -> state[i] state[j] state[k] // the transitions according to the symbols order that determines which state to go next
+    state 1 -> state[i] state[j] state[k] 
+    state 2 -> state[i] state[j] state[k] 
+    state 3 -> state[i] state[j] state[k] 
+finalAcceptedstates: the array of final state which are accepted. Ex: {0,2,4} the 0,2,4 states are the accepting state.
