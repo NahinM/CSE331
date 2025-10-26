@@ -1,8 +1,9 @@
-from dfa import *
-from checkerFun_kkp_Fall25 import *
+from package.dfa import *
+from package.nfa import *
+from package.CheckerFuns.checkerFun_kkp_Fall25 import *
 SYMBOLS_TEST = ""
 MAXLENGTH = 8
-MY_DFA:DFA
+MY_FA:DFA | NFA
 CHECKER_NAME:str = ""
 TOTAL = 0
 PASSED = 0
@@ -10,7 +11,7 @@ PASSED = 0
 def L_genarator(L:str = "", d=0):
     global TOTAL,PASSED,MAXLENGTH,SYMBOLS_TEST,CHECKER_NAME
     TOTAL+=1
-    LHS = MY_DFA.runMachine(L)
+    LHS = MY_FA.runMachine(L)
     RHS = checker_kkp_fall25[CHECKER_NAME](L)
     if LHS!=RHS:
         print(f"{L} -Not Accepted")
@@ -19,17 +20,17 @@ def L_genarator(L:str = "", d=0):
     if d==MAXLENGTH: return
     for c in SYMBOLS_TEST: L_genarator(L+c,d+1)
 
-def test(dfa:DFA,checkerFun:str) -> None:
-    global SYMBOLS_TEST,CHECKER_NAME,MY_DFA,TOTAL,PASSED,MAXLENGTH
+def test(dfa:DFA | NFA,checkerFunName:str) -> None:
+    global SYMBOLS_TEST,CHECKER_NAME,MY_FA,TOTAL,PASSED,MAXLENGTH
     TOTAL=PASSED=0
     SYMBOLS_TEST = dfa.symbols
-    MY_DFA = dfa
-    CHECKER_NAME = checkerFun
+    MY_FA = dfa
+    CHECKER_NAME = checkerFunName
     if len(SYMBOLS_TEST)<=2:
         MAXLENGTH = 18
     elif len(SYMBOLS_TEST)<=3:
         MAXLENGTH = 11
-    print(f"starting test for question{checkerFun}")
+    print(f"starting test for question{checkerFunName}")
     L_genarator()
     print(f"Total {TOTAL} test cases")
     print(f"Passed {PASSED} cases")

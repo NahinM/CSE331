@@ -93,7 +93,17 @@ def question12(L:str) -> bool:
         else: zero+=1
     return abs(one-zero)%3==0
 
-
+def question19(L:str) -> bool:
+    i=0
+    while i<len(L) and L[i]!='1': i+=1
+    zero = 0
+    while i<len(L):
+        if L[i] == '0': zero+=1
+        else:
+            if zero&1: return False
+            zero = 0
+        i+=1
+    return True
 
 checker_kkp_fall25 = {
     "1": question1,
@@ -113,4 +123,5 @@ checker_kkp_fall25 = {
     "10b":question10b,
     "11":question11,
     "12":question12,
+    "19":question19
 }
