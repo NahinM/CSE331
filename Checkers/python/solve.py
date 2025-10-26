@@ -9,22 +9,20 @@ Question:str
 Question = "1"
 
 # Input your DFA|NFA:
+
 # MY_FA = NFA(
-#     "01",
+#     "01", # input symbols
+#     [], # input all the starting states q0
 #     [
 #         [[],[]],
-#         [[],[]],
-#         [[],[]],
-#         [[],[]],
-#         [[],[]]
 #     ],
-#     []
+#     [] #input accepting final states
 # )
 
 MY_FA = DFA(
-    "01",
+    "01", # input symbols
     [
-        
+        [] # input transition states
     ],
-    []
+    []  #input accepting final states
 )
